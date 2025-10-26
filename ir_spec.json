@@ -1,0 +1,1584 @@
+{
+  "version": "1.0",
+  "brief": "a simple web calculator application",
+  "app": {
+    "name": "General Tool",
+    "description": "a simple web calculator application",
+    "type": "tool",
+    "domain": "general",
+    "stack": {
+      "backend": {
+        "language": "python",
+        "framework": "standalone",
+        "libraries": [],
+        "runtime": "standalone"
+      },
+      "frontend": {
+        "language": "",
+        "framework": "",
+        "libraries": null,
+        "build": ""
+      },
+      "database": {
+        "type": "",
+        "version": "",
+        "features": null
+      },
+      "cache": {
+        "type": "",
+        "version": ""
+      }
+    },
+    "features": [
+      {
+        "name": "Core Application",
+        "description": "Basic application functionality",
+        "type": "core",
+        "priority": "high",
+        "dependencies": null,
+        "entities": null,
+        "operations": [
+          "initialize",
+          "configure",
+          "serve"
+        ]
+      }
+    ],
+    "scale": {
+      "users": {
+        "initial": 100,
+        "peak": 1000,
+        "growth": 50
+      },
+      "requests": {
+        "initial": 1000,
+        "peak": 10000,
+        "growth": 100
+      },
+      "storage": {
+        "initial": 1,
+        "peak": 100,
+        "growth": 200
+      },
+      "latency": "500ms",
+      "uptime": "99.9%",
+      "concurrency": 100
+    }
+  },
+  "non_functionals": {
+    "security": {
+      "authentication": null,
+      "authorization": null,
+      "encryption": null,
+      "audit": false,
+      "compliance": null
+    },
+    "performance": {
+      "response_time": "500ms",
+      "throughput": "1000rps",
+      "memory": "512MB",
+      "cpu": "2cores"
+    },
+    "compliance": {
+      "standards": null,
+      "data_retention": "",
+      "audit_log": false
+    },
+    "monitoring": {
+      "metrics": [],
+      "logging": "",
+      "tracing": false,
+      "alerts": []
+    }
+  },
+  "api": {
+    "type": "rest",
+    "version": "v1",
+    "base_url": "/api/v1",
+    "auth": {
+      "type": "bearer",
+      "scopes": null,
+      "required": true
+    },
+    "endpoints": [
+      {
+        "path": "/user",
+        "method": "GET",
+        "summary": "List User",
+        "description": "Retrieve a list of User",
+        "parameters": null,
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": "UserList"
+          }
+        },
+        "auth": true
+      },
+      {
+        "path": "/user/{id}",
+        "method": "GET",
+        "summary": "Get User",
+        "description": "Retrieve a specific User by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true,
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": "User"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "auth": true
+      },
+      {
+        "path": "/user",
+        "method": "POST",
+        "summary": "Create User",
+        "description": "Create a new User",
+        "parameters": null,
+        "request_body": {
+          "required": true,
+          "content_type": "application/json",
+          "schema": "CreateUser"
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": "User"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        },
+        "auth": true
+      },
+      {
+        "path": "/user/{id}",
+        "method": "PUT",
+        "summary": "Update User",
+        "description": "Update an existing User",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true,
+            "description": ""
+          }
+        ],
+        "request_body": {
+          "required": true,
+          "content_type": "application/json",
+          "schema": "UpdateUser"
+        },
+        "responses": {
+          "200": {
+            "description": "Updated",
+            "schema": "User"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "auth": true
+      },
+      {
+        "path": "/user/{id}",
+        "method": "DELETE",
+        "summary": "Delete User",
+        "description": "Delete a User",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true,
+            "description": ""
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleted"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "auth": true
+      },
+      {
+        "path": "/calculation",
+        "method": "GET",
+        "summary": "List Calculation",
+        "description": "Retrieve a list of Calculation",
+        "parameters": null,
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": "CalculationList"
+          }
+        },
+        "auth": true
+      },
+      {
+        "path": "/calculation/{id}",
+        "method": "GET",
+        "summary": "Get Calculation",
+        "description": "Retrieve a specific Calculation by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true,
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": "Calculation"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "auth": true
+      },
+      {
+        "path": "/calculation",
+        "method": "POST",
+        "summary": "Create Calculation",
+        "description": "Create a new Calculation",
+        "parameters": null,
+        "request_body": {
+          "required": true,
+          "content_type": "application/json",
+          "schema": "CreateCalculation"
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": "Calculation"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        },
+        "auth": true
+      },
+      {
+        "path": "/calculation/{id}",
+        "method": "PUT",
+        "summary": "Update Calculation",
+        "description": "Update an existing Calculation",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true,
+            "description": ""
+          }
+        ],
+        "request_body": {
+          "required": true,
+          "content_type": "application/json",
+          "schema": "UpdateCalculation"
+        },
+        "responses": {
+          "200": {
+            "description": "Updated",
+            "schema": "Calculation"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "auth": true
+      },
+      {
+        "path": "/calculation/{id}",
+        "method": "DELETE",
+        "summary": "Delete Calculation",
+        "description": "Delete a Calculation",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true,
+            "description": ""
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleted"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "auth": true
+      },
+      {
+        "path": "/calculationhistory",
+        "method": "GET",
+        "summary": "List CalculationHistory",
+        "description": "Retrieve a list of CalculationHistory",
+        "parameters": null,
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": "CalculationHistoryList"
+          }
+        },
+        "auth": true
+      },
+      {
+        "path": "/calculationhistory/{id}",
+        "method": "GET",
+        "summary": "Get CalculationHistory",
+        "description": "Retrieve a specific CalculationHistory by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true,
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": "CalculationHistory"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "auth": true
+      },
+      {
+        "path": "/calculationhistory",
+        "method": "POST",
+        "summary": "Create CalculationHistory",
+        "description": "Create a new CalculationHistory",
+        "parameters": null,
+        "request_body": {
+          "required": true,
+          "content_type": "application/json",
+          "schema": "CreateCalculationHistory"
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": "CalculationHistory"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        },
+        "auth": true
+      },
+      {
+        "path": "/calculationhistory/{id}",
+        "method": "PUT",
+        "summary": "Update CalculationHistory",
+        "description": "Update an existing CalculationHistory",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true,
+            "description": ""
+          }
+        ],
+        "request_body": {
+          "required": true,
+          "content_type": "application/json",
+          "schema": "UpdateCalculationHistory"
+        },
+        "responses": {
+          "200": {
+            "description": "Updated",
+            "schema": "CalculationHistory"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "auth": true
+      },
+      {
+        "path": "/calculationhistory/{id}",
+        "method": "DELETE",
+        "summary": "Delete CalculationHistory",
+        "description": "Delete a CalculationHistory",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true,
+            "description": ""
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleted"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "auth": true
+      },
+      {
+        "path": "/session",
+        "method": "GET",
+        "summary": "List Session",
+        "description": "Retrieve a list of Session",
+        "parameters": null,
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": "SessionList"
+          }
+        },
+        "auth": true
+      },
+      {
+        "path": "/session/{id}",
+        "method": "GET",
+        "summary": "Get Session",
+        "description": "Retrieve a specific Session by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true,
+            "description": ""
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": "Session"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "auth": true
+      },
+      {
+        "path": "/session",
+        "method": "POST",
+        "summary": "Create Session",
+        "description": "Create a new Session",
+        "parameters": null,
+        "request_body": {
+          "required": true,
+          "content_type": "application/json",
+          "schema": "CreateSession"
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": "Session"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        },
+        "auth": true
+      },
+      {
+        "path": "/session/{id}",
+        "method": "PUT",
+        "summary": "Update Session",
+        "description": "Update an existing Session",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true,
+            "description": ""
+          }
+        ],
+        "request_body": {
+          "required": true,
+          "content_type": "application/json",
+          "schema": "UpdateSession"
+        },
+        "responses": {
+          "200": {
+            "description": "Updated",
+            "schema": "Session"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "auth": true
+      },
+      {
+        "path": "/session/{id}",
+        "method": "DELETE",
+        "summary": "Delete Session",
+        "description": "Delete a Session",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true,
+            "description": ""
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleted"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        },
+        "auth": true
+      }
+    ],
+    "schemas": [
+      {
+        "name": "User",
+        "type": "object",
+        "properties": {
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": ""
+          },
+          "email": {
+            "type": "string",
+            "description": ""
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": ""
+          },
+          "is_active": {
+            "type": "boolean",
+            "description": ""
+          },
+          "password_hash": {
+            "type": "string",
+            "description": ""
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": ""
+          },
+          "username": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "required": [
+          "id",
+          "email",
+          "password_hash",
+          "is_active",
+          "created_at",
+          "updated_at"
+        ],
+        "description": "Application user who performs calculations"
+      },
+      {
+        "name": "CreateUser",
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": ""
+          },
+          "is_active": {
+            "type": "boolean",
+            "description": ""
+          },
+          "password_hash": {
+            "type": "string",
+            "description": ""
+          },
+          "username": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "required": [
+          "email",
+          "password_hash",
+          "is_active"
+        ],
+        "description": "Create user request"
+      },
+      {
+        "name": "UpdateUser",
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": ""
+          },
+          "is_active": {
+            "type": "boolean",
+            "description": ""
+          },
+          "password_hash": {
+            "type": "string",
+            "description": ""
+          },
+          "username": {
+            "type": "string",
+            "description": ""
+          }
+        },
+        "required": [],
+        "description": "Update user request"
+      },
+      {
+        "name": "UserList",
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "description": "",
+            "items": {
+              "type": "object",
+              "description": "",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "format": "uuid",
+                  "description": ""
+                },
+                "name": {
+                  "type": "string",
+                  "description": ""
+                }
+              }
+            }
+          },
+          "total": {
+            "type": "integer",
+            "description": "Total count"
+          }
+        },
+        "required": [
+          "data",
+          "total"
+        ],
+        "description": "User list response"
+      },
+      {
+        "name": "Calculation",
+        "type": "object",
+        "properties": {
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": ""
+          },
+          "expression": {
+            "type": "string",
+            "description": ""
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": ""
+          },
+          "operation_type": {
+            "type": "string",
+            "description": ""
+          },
+          "result": {
+            "type": "number",
+            "description": ""
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": ""
+          },
+          "user_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": ""
+          }
+        },
+        "required": [
+          "id",
+          "expression",
+          "result",
+          "operation_type",
+          "created_at",
+          "updated_at"
+        ],
+        "description": "Individual calculation performed by user"
+      },
+      {
+        "name": "CreateCalculation",
+        "type": "object",
+        "properties": {
+          "expression": {
+            "type": "string",
+            "description": ""
+          },
+          "operation_type": {
+            "type": "string",
+            "description": ""
+          },
+          "result": {
+            "type": "number",
+            "description": ""
+          },
+          "user_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": ""
+          }
+        },
+        "required": [
+          "expression",
+          "result",
+          "operation_type"
+        ],
+        "description": "Create calculation request"
+      },
+      {
+        "name": "UpdateCalculation",
+        "type": "object",
+        "properties": {
+          "expression": {
+            "type": "string",
+            "description": ""
+          },
+          "operation_type": {
+            "type": "string",
+            "description": ""
+          },
+          "result": {
+            "type": "number",
+            "description": ""
+          },
+          "user_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": ""
+          }
+        },
+        "required": [],
+        "description": "Update calculation request"
+      },
+      {
+        "name": "CalculationList",
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "description": "",
+            "items": {
+              "type": "object",
+              "description": "",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "format": "uuid",
+                  "description": ""
+                },
+                "name": {
+                  "type": "string",
+                  "description": ""
+                }
+              }
+            }
+          },
+          "total": {
+            "type": "integer",
+            "description": "Total count"
+          }
+        },
+        "required": [
+          "data",
+          "total"
+        ],
+        "description": "Calculation list response"
+      },
+      {
+        "name": "CalculationHistory",
+        "type": "object",
+        "properties": {
+          "calculation_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": ""
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": ""
+          },
+          "expression": {
+            "type": "string",
+            "description": ""
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": ""
+          },
+          "ip_address": {
+            "type": "string",
+            "description": ""
+          },
+          "result": {
+            "type": "number",
+            "description": ""
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": ""
+          },
+          "user_agent": {
+            "type": "string",
+            "description": ""
+          },
+          "user_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": ""
+          }
+        },
+        "required": [
+          "id",
+          "calculation_id",
+          "expression",
+          "result",
+          "created_at",
+          "updated_at"
+        ],
+        "description": "History log of all calculations for audit purposes"
+      },
+      {
+        "name": "CreateCalculationHistory",
+        "type": "object",
+        "properties": {
+          "calculation_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": ""
+          },
+          "expression": {
+            "type": "string",
+            "description": ""
+          },
+          "ip_address": {
+            "type": "string",
+            "description": ""
+          },
+          "result": {
+            "type": "number",
+            "description": ""
+          },
+          "user_agent": {
+            "type": "string",
+            "description": ""
+          },
+          "user_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": ""
+          }
+        },
+        "required": [
+          "calculation_id",
+          "expression",
+          "result"
+        ],
+        "description": "Create calculationhistory request"
+      },
+      {
+        "name": "UpdateCalculationHistory",
+        "type": "object",
+        "properties": {
+          "calculation_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": ""
+          },
+          "expression": {
+            "type": "string",
+            "description": ""
+          },
+          "ip_address": {
+            "type": "string",
+            "description": ""
+          },
+          "result": {
+            "type": "number",
+            "description": ""
+          },
+          "user_agent": {
+            "type": "string",
+            "description": ""
+          },
+          "user_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": ""
+          }
+        },
+        "required": [],
+        "description": "Update calculationhistory request"
+      },
+      {
+        "name": "CalculationHistoryList",
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "description": "",
+            "items": {
+              "type": "object",
+              "description": "",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "format": "uuid",
+                  "description": ""
+                },
+                "name": {
+                  "type": "string",
+                  "description": ""
+                }
+              }
+            }
+          },
+          "total": {
+            "type": "integer",
+            "description": "Total count"
+          }
+        },
+        "required": [
+          "data",
+          "total"
+        ],
+        "description": "CalculationHistory list response"
+      },
+      {
+        "name": "Session",
+        "type": "object",
+        "properties": {
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": ""
+          },
+          "expires_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": ""
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "description": ""
+          },
+          "ip_address": {
+            "type": "string",
+            "description": ""
+          },
+          "token": {
+            "type": "string",
+            "description": ""
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": ""
+          },
+          "user_agent": {
+            "type": "string",
+            "description": ""
+          },
+          "user_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": ""
+          }
+        },
+        "required": [
+          "id",
+          "user_id",
+          "token",
+          "expires_at",
+          "created_at",
+          "updated_at"
+        ],
+        "description": "User session for authentication"
+      },
+      {
+        "name": "CreateSession",
+        "type": "object",
+        "properties": {
+          "expires_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": ""
+          },
+          "ip_address": {
+            "type": "string",
+            "description": ""
+          },
+          "token": {
+            "type": "string",
+            "description": ""
+          },
+          "user_agent": {
+            "type": "string",
+            "description": ""
+          },
+          "user_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": ""
+          }
+        },
+        "required": [
+          "user_id",
+          "token",
+          "expires_at"
+        ],
+        "description": "Create session request"
+      },
+      {
+        "name": "UpdateSession",
+        "type": "object",
+        "properties": {
+          "expires_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": ""
+          },
+          "ip_address": {
+            "type": "string",
+            "description": ""
+          },
+          "token": {
+            "type": "string",
+            "description": ""
+          },
+          "user_agent": {
+            "type": "string",
+            "description": ""
+          },
+          "user_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": ""
+          }
+        },
+        "required": [],
+        "description": "Update session request"
+      },
+      {
+        "name": "SessionList",
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "description": "",
+            "items": {
+              "type": "object",
+              "description": "",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "format": "uuid",
+                  "description": ""
+                },
+                "name": {
+                  "type": "string",
+                  "description": ""
+                }
+              }
+            }
+          },
+          "total": {
+            "type": "integer",
+            "description": "Total count"
+          }
+        },
+        "required": [
+          "data",
+          "total"
+        ],
+        "description": "Session list response"
+      }
+    ],
+    "config": {
+      "cors": true,
+      "compression": true,
+      "versioning": "path",
+      "pagination": "offset"
+    }
+  },
+  "data": {
+    "entities": [
+      {
+        "name": "User",
+        "description": "Application user who performs calculations",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid",
+            "required": true,
+            "unique": true,
+            "validation": null,
+            "description": ""
+          },
+          {
+            "name": "email",
+            "type": "string",
+            "required": true,
+            "unique": true,
+            "validation": null,
+            "description": ""
+          },
+          {
+            "name": "username",
+            "type": "string",
+            "required": false,
+            "unique": true,
+            "validation": null,
+            "description": ""
+          },
+          {
+            "name": "password_hash",
+            "type": "string",
+            "required": true,
+            "unique": false,
+            "validation": null,
+            "description": ""
+          },
+          {
+            "name": "is_active",
+            "type": "boolean",
+            "required": true,
+            "unique": false,
+            "default": "true",
+            "validation": null,
+            "description": ""
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp",
+            "required": true,
+            "unique": false,
+            "validation": null,
+            "description": ""
+          },
+          {
+            "name": "updated_at",
+            "type": "timestamp",
+            "required": true,
+            "unique": false,
+            "validation": null,
+            "description": ""
+          }
+        ],
+        "constraints": [
+          {
+            "type": "primary_key",
+            "fields": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Calculation",
+        "description": "Individual calculation performed by user",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid",
+            "required": true,
+            "unique": true,
+            "validation": null,
+            "description": ""
+          },
+          {
+            "name": "user_id",
+            "type": "uuid",
+            "required": false,
+            "unique": false,
+            "validation": null,
+            "description": ""
+          },
+          {
+            "name": "expression",
+            "type": "string",
+            "required": true,
+            "unique": false,
+            "validation": null,
+            "description": ""
+          },
+          {
+            "name": "result",
+            "type": "decimal",
+            "required": true,
+            "unique": false,
+            "validation": null,
+            "description": ""
+          },
+          {
+            "name": "operation_type",
+            "type": "string",
+            "required": true,
+            "unique": false,
+            "validation": null,
+            "description": ""
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp",
+            "required": true,
+            "unique": false,
+            "validation": null,
+            "description": ""
+          },
+          {
+            "name": "updated_at",
+            "type": "timestamp",
+            "required": true,
+            "unique": false,
+            "validation": null,
+            "description": ""
+          }
+        ],
+        "constraints": [
+          {
+            "type": "primary_key",
+            "fields": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "CalculationHistory",
+        "description": "History log of all calculations for audit purposes",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid",
+            "required": true,
+            "unique": true,
+            "validation": null,
+            "description": ""
+          },
+          {
+            "name": "calculation_id",
+            "type": "uuid",
+            "required": true,
+            "unique": false,
+            "validation": null,
+            "description": ""
+          },
+          {
+            "name": "user_id",
+            "type": "uuid",
+            "required": false,
+            "unique": false,
+            "validation": null,
+            "description": ""
+          },
+          {
+            "name": "expression",
+            "type": "string",
+            "required": true,
+            "unique": false,
+            "validation": null,
+            "description": ""
+          },
+          {
+            "name": "result",
+            "type": "decimal",
+            "required": true,
+            "unique": false,
+            "validation": null,
+            "description": ""
+          },
+          {
+            "name": "ip_address",
+            "type": "string",
+            "required": false,
+            "unique": false,
+            "validation": null,
+            "description": ""
+          },
+          {
+            "name": "user_agent",
+            "type": "string",
+            "required": false,
+            "unique": false,
+            "validation": null,
+            "description": ""
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp",
+            "required": true,
+            "unique": false,
+            "validation": null,
+            "description": ""
+          },
+          {
+            "name": "updated_at",
+            "type": "timestamp",
+            "required": true,
+            "unique": false,
+            "validation": null,
+            "description": ""
+          }
+        ],
+        "constraints": [
+          {
+            "type": "primary_key",
+            "fields": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Session",
+        "description": "User session for authentication",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid",
+            "required": true,
+            "unique": true,
+            "validation": null,
+            "description": ""
+          },
+          {
+            "name": "user_id",
+            "type": "uuid",
+            "required": true,
+            "unique": false,
+            "validation": null,
+            "description": ""
+          },
+          {
+            "name": "token",
+            "type": "string",
+            "required": true,
+            "unique": true,
+            "validation": null,
+            "description": ""
+          },
+          {
+            "name": "expires_at",
+            "type": "timestamp",
+            "required": true,
+            "unique": false,
+            "validation": null,
+            "description": ""
+          },
+          {
+            "name": "ip_address",
+            "type": "string",
+            "required": false,
+            "unique": false,
+            "validation": null,
+            "description": ""
+          },
+          {
+            "name": "user_agent",
+            "type": "string",
+            "required": false,
+            "unique": false,
+            "validation": null,
+            "description": ""
+          },
+          {
+            "name": "created_at",
+            "type": "timestamp",
+            "required": true,
+            "unique": false,
+            "validation": null,
+            "description": ""
+          },
+          {
+            "name": "updated_at",
+            "type": "timestamp",
+            "required": true,
+            "unique": false,
+            "validation": null,
+            "description": ""
+          }
+        ],
+        "constraints": [
+          {
+            "type": "primary_key",
+            "fields": [
+              "id"
+            ]
+          }
+        ]
+      }
+    ],
+    "relationships": [],
+    "migrations": [],
+    "seeds": [],
+    "indexes": [],
+    "config": {
+      "migrations": true,
+      "seeds": true,
+      "soft_delete": false,
+      "timestamps": true
+    }
+  },
+  "ui": {
+    "type": "",
+    "pages": null,
+    "components": null,
+    "theme": {
+      "primary": "",
+      "secondary": "",
+      "style": ""
+    },
+    "config": {
+      "responsive": false,
+      "pwa": false,
+      "i18n": false
+    }
+  },
+  "ops": {
+    "environment": [],
+    "ci_cd": {
+      "provider": "",
+      "triggers": [],
+      "stages": []
+    },
+    "monitoring": {
+      "provider": "",
+      "dashboards": [],
+      "alerts": []
+    },
+    "backup": {
+      "frequency": "",
+      "retention": "",
+      "provider": ""
+    },
+    "scaling": {
+      "type": "",
+      "min": 0,
+      "max": 0,
+      "triggers": []
+    },
+    "config": {
+      "ssl": false,
+      "cdn": false,
+      "load_balancer": false
+    }
+  },
+  "acceptance": [
+    {
+      "id": "functional-001",
+      "description": "All API endpoints return proper HTTP status codes",
+      "type": "functional",
+      "priority": "must",
+      "testable": true,
+      "automated": true
+    },
+    {
+      "id": "security-001",
+      "description": "All endpoints require proper authentication",
+      "type": "security",
+      "priority": "must",
+      "testable": true,
+      "automated": true
+    },
+    {
+      "id": "performance-001",
+      "description": "API response time is under 500ms for 95% of requests",
+      "type": "performance",
+      "priority": "should",
+      "testable": true,
+      "automated": true
+    }
+  ],
+  "questions": [
+    {
+      "id": "domain-001",
+      "question": "What is the primary domain or industry for this application?",
+      "context": "This helps determine appropriate features and compliance requirements",
+      "type": "business",
+      "options": [
+        "ecommerce",
+        "fintech",
+        "healthcare",
+        "education",
+        "social",
+        "business"
+      ],
+      "required": false
+    },
+    {
+      "id": "compliance-001",
+      "question": "Are there any specific compliance requirements (GDPR, HIPAA, PCI, etc.)?",
+      "context": "This affects data handling, security measures, and audit requirements",
+      "type": "security",
+      "options": [
+        "none",
+        "gdpr",
+        "hipaa",
+        "pci-dss",
+        "sox"
+      ],
+      "required": false
+    }
+  ],
+  "metadata": {
+    "created_at": "2025-10-26T23:08:01.29280667Z",
+    "updated_at": "2025-10-26T23:08:01.29280671Z",
+    "version": "1.0",
+    "confidence": 0.55,
+    "completeness": 0.7,
+    "tags": [
+      "web"
+    ],
+    "source": "ai"
+  }
+}
